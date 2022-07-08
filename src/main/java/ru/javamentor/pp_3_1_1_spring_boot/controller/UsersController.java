@@ -1,6 +1,5 @@
 package ru.javamentor.pp_3_1_1_spring_boot.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,6 @@ public class UsersController {
 
     private final UserService userService;
 
-    @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
@@ -51,11 +49,10 @@ public class UsersController {
         return "redirect:/";
     }
 
-    @GetMapping("user-delete/{id}")
+    @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id){
         userService.delete(id);
         return "redirect:/";
     }
-
 
 }
